@@ -2,17 +2,14 @@
 {
     public class SinglyLinkedListNode<T>
     {
-        private T _data;
-        private SinglyLinkedListNode<T> _next;
+        public T Data { get; set; }
 
-        public T Data { get => _data; set => _data = value; }
-
-        public SinglyLinkedListNode<T> Next { get => _next; set => _next = value; }
+        public SinglyLinkedListNode<T> Next { get; set; }
 
         public SinglyLinkedListNode(T data)
         {
-            _data = data;
-            _next = null;
+            Data = data;
+            Next = null;
         }
 
         public void CreateAddNodeAfter(T data, SinglyLinkedListNode<T> currentNode) 
@@ -25,7 +22,7 @@
 
         public override string ToString()
         {
-            return _data.ToString();
+            return Data.ToString();
         }
 
         public override bool Equals(object obj)

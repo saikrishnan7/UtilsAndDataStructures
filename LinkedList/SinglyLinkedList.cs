@@ -10,32 +10,16 @@ namespace LinkedList
 {
     public class SinglyLinkedList<T> : IEnumerable<T>
     {
-        private SinglyLinkedListNode<T> _head;
-        private SinglyLinkedListNode<T> _tail;
-        private int _length;
+        public SinglyLinkedListNode<T> Head { get; private set; }
 
-        public SinglyLinkedListNode<T> Head
-        {
-            get => _head;
-            private set => _head = value;
-        }
+        public SinglyLinkedListNode<T> Tail { get; private set; }
 
-        public SinglyLinkedListNode<T> Tail
-        {
-            get => _tail;
-            private set => _tail = value;
-        }
-
-        public int Length
-        {
-            get => _length;
-            private set => _length = value;
-        }
+        public int Length { get; private set; }
 
         public SinglyLinkedList()
         {
-            _head = _tail = null;
-            _length = 0;
+            Head = Tail = null;
+            Length = 0;
         }
 
         public SinglyLinkedList<T> InsertFirst(T data)
@@ -50,7 +34,7 @@ namespace LinkedList
                 node.Next = Head;
                 Head = node;
             }
-            _length++;
+            Length++;
             return this;
         }
 
@@ -66,20 +50,20 @@ namespace LinkedList
                 Tail.Next = node;
                 Tail = node;
             }
-            _length++;
+            Length++;
             return this;
         }
 
         public SinglyLinkedList<T> RemoveLast()
         {
             var node = Head;
-            for(int i = 0; i < _length - 2; i++)
+            for(int i = 0; i < Length - 2; i++)
             {
                 node = node.Next;
             }
             Tail = node;
             node.Next = null;
-            _length--;
+            Length--;
             return this;
         }
 
@@ -88,7 +72,22 @@ namespace LinkedList
             var headCopy = Head;
             Head = Head.Next;
             headCopy = null;
-            _length--;
+            Length--;
+            return this;
+        }
+
+        public SinglyLinkedList<T> RemoveNext(SinglyLinkedListNode<T> node)
+        {
+            if (node.Next == Tail)
+            {
+                Tail = node;
+                node.Next = null;
+            }
+            else
+            {
+                node.Next = node.Next.Next;
+            }
+            Length--;
             return this;
         }
 
@@ -98,7 +97,7 @@ namespace LinkedList
             {
                 Tail.Next = list2.Head;
                 Tail = list2.Tail;
-                _length += list2._length;
+                Length += list2.Length;
             }
             return this;
         }

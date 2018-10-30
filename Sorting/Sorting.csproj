@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0DD5FE41-D699-48AB-B882-C3C0D8400749}</ProjectGuid>
+    <ProjectGuid>{D1880E90-5EDA-408F-8159-6CC34A756DE2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Problems</RootNamespace>
-    <AssemblyName>Problems</AssemblyName>
+    <RootNamespace>Sorting</RootNamespace>
+    <AssemblyName>Sorting</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,25 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CtCiDP.cs" />
-    <Compile Include="CtCiList.cs" />
-    <Compile Include="MinStack.cs" />
-    <Compile Include="SampleProblems.cs" />
+    <Compile Include="MergeSortHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueueWithStacks.cs" />
+    <Compile Include="SinglyLinkedListNode.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ComplexDataStructures\ComplexDataStructures.csproj">
-      <Project>{4EAAD862-E291-4FFC-8F8E-DAF753C05CA2}</Project>
-      <Name>ComplexDataStructures</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DataStructureHelper\DataStructureHelper.csproj">
       <Project>{C347D637-6914-4FC3-B8E0-ED12E41DE2AA}</Project>
       <Name>DataStructureHelper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LinkedList\Lists.csproj">
-      <Project>{D813289E-2C96-489A-9307-66A064E1C5F4}</Project>
-      <Name>Lists</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

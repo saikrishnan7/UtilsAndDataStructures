@@ -13,6 +13,8 @@ namespace DataStructuresRun
         {
             new SinglyLinkedListTester().Go();
             new DoublyLinkedListTester().Go();
+            SampleProblems sp = new SampleProblems();
+            sp.LetterCombinations("234");
         }
     }
 }
