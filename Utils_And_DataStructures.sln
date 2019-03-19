@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorting", "Sorting\Sorting.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortHelperTests", "SortHelperTests\SortHelperTests.csproj", "{A29EFA0E-9092-4D46-BC59-D64B63EE4E34}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidPrinciplesExercise", "SolidPrinciplesExercise\SolidPrinciplesExercise.csproj", "{E2BFD2D1-EE31-4508-93D5-13D709F34908}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{A29EFA0E-9092-4D46-BC59-D64B63EE4E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A29EFA0E-9092-4D46-BC59-D64B63EE4E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A29EFA0E-9092-4D46-BC59-D64B63EE4E34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2BFD2D1-EE31-4508-93D5-13D709F34908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2BFD2D1-EE31-4508-93D5-13D709F34908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2BFD2D1-EE31-4508-93D5-13D709F34908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2BFD2D1-EE31-4508-93D5-13D709F34908}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

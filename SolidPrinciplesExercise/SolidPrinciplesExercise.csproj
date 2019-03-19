@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4EAAD862-E291-4FFC-8F8E-DAF753C05CA2}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ComplexDataStructures</RootNamespace>
-    <AssemblyName>ComplexDataStructures</AssemblyName>
+    <ProjectGuid>{E2BFD2D1-EE31-4508-93D5-13D709F34908}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SolidPrinciplesExercise</RootNamespace>
+    <AssemblyName>SolidPrinciplesExercise</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,26 +43,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HashTable.cs" />
-    <Compile Include="MaxHeap.cs" />
-    <Compile Include="MinHeap.cs" />
-    <Compile Include="Point.cs" />
-    <Compile Include="Queue.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RandomizedCollection.cs" />
-    <Compile Include="SnakeGame.cs" />
-    <Compile Include="Stack.cs" />
-    <Compile Include="Trie.cs" />
+    <Compile Include="SRP\Cart.cs" />
+    <Compile Include="SRP\CartItem.cs" />
+    <Compile Include="SRP\Item.cs" />
+    <Compile Include="SRP\INotificationService.cs" />
+    <Compile Include="SRP\IPaymentProcesser.cs" />
+    <Compile Include="SRP\IReservationService.cs" />
+    <Compile Include="SRP\OnlineOrder.cs" />
+    <Compile Include="SRP\Order.cs" />
+    <Compile Include="SRP\PaymentDetails.cs" />
+    <Compile Include="SRP\PoSCashOrder.cs" />
+    <Compile Include="SRP\PoSCreditOrder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataStructureHelper\DataStructureHelper.csproj">
-      <Project>{C347D637-6914-4FC3-B8E0-ED12E41DE2AA}</Project>
-      <Name>DataStructureHelper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LinkedList\Lists.csproj">
-      <Project>{D813289E-2C96-489A-9307-66A064E1C5F4}</Project>
-      <Name>Lists</Name>
-    </ProjectReference>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LSP\" />
+    <Folder Include="OCP\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

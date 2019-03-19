@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="CtCiDP.cs" />
     <Compile Include="CtCiList.cs" />
+    <Compile Include="GameOfLifeClass.cs" />
+    <Compile Include="LFUCache.cs" />
     <Compile Include="MinStack.cs" />
     <Compile Include="SampleProblems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
