@@ -43,6 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LSP\Circle.cs" />
+    <Compile Include="LSP\Rectangle.cs" />
+    <Compile Include="LSP\Shape.cs" />
+    <Compile Include="LSP\Square.cs" />
+    <Compile Include="OCP\B4GoRule.cs" />
+    <Compile Include="OCP\BoGoRule.cs" />
+    <Compile Include="OCP\Cart.cs" />
+    <Compile Include="OCP\GetFiftyByWeightRule.cs" />
+    <Compile Include="OCP\IPricingCalculator.cs" />
+    <Compile Include="OCP\IPricingRule.cs" />
+    <Compile Include="OCP\OrderItem.cs" />
+    <Compile Include="OCP\PricingCalculator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SRP\Cart.cs" />
@@ -60,9 +72,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="LSP\" />
-    <Folder Include="OCP\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
