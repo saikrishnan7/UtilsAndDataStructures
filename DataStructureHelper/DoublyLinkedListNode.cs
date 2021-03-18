@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataStructureHelper
+﻿namespace DataStructureHelper
 {
     public class DoublyLinkedListNode<T> 
     {
@@ -26,9 +20,9 @@ namespace DataStructureHelper
 
         public void CreateAddNodeAfter(T data, DoublyLinkedListNode<T> currentNode)
         {
-            DoublyLinkedListNode<T> newNode = new DoublyLinkedListNode<T>(data);
-            DoublyLinkedListNode<T> nextCopy = currentNode.Next;
-            DoublyLinkedListNode<T> prevCopy = currentNode.Prev;
+            var newNode = new DoublyLinkedListNode<T>(data);
+            var nextCopy = currentNode.Next;
+            var prevCopy = currentNode.Prev;
             currentNode.Next = newNode;
             newNode.Prev = currentNode;
             newNode.Next = nextCopy;
@@ -38,16 +32,13 @@ namespace DataStructureHelper
         {
             if (obj == null)
                 return false;
-            else
-            {
-                DoublyLinkedListNode<T> node = (DoublyLinkedListNode<T>)obj;
-                return Data.Equals(node.Data);
-            }
+            var node = (DoublyLinkedListNode<T>)obj;
+            return Data.Equals(node.Data);
         }
 
         public override int GetHashCode()
         {
-            int hash = 97;
+            var hash = 97;
             hash = hash * 143 + (Data == null ? 0 : Data.GetHashCode());
             hash = hash * 143 + (Next == null ? 0 : Next.GetHashCode());
             hash = hash * 143 + (Prev == null ? 0 : Prev.GetHashCode());

@@ -2,15 +2,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ComplexDataStructures
 {
     public class Stack<T> : IEnumerable<T>
     {
-        private SinglyLinkedList<T> _list;
+        private readonly SinglyLinkedList<T> _list;
         private int _size;
 
         public Stack()
@@ -38,7 +35,7 @@ namespace ComplexDataStructures
         {
             if (_size == 0)
                 throw new InvalidOperationException("Cannot pop an empty Stack");
-            T item = _list.Head.Data;
+            var item = _list.Head.Data;
             _list.RemoveFirst();
             _size--;
             return item;

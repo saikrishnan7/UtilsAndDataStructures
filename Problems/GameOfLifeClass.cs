@@ -2,18 +2,18 @@
 
 public class GameOfLifeClass
 {
-    List<Point> points = new List<Point>();
-    int[][] original = null;
-    int[][] board = null;
+    private readonly List<Point> _points = new List<Point>();
+    private int[][] _original = null;
+    private int[][] _board = null;
 
     public void GameOfLife(int[][] board)
     {
-        this.board = board;
-        original = new int[board.Length][];
+        this._board = board;
+        _original = new int[board.Length][];
         CloneBoard();
-        for (int i = 0; i < board.Length; i++)
+        for (var i = 0; i < board.Length; i++)
         {
-            for (int j = 0; j < board[i].Length; j++)
+            for (var j = 0; j < board[i].Length; j++)
             {
                 GetNextState(i, j);
             }
@@ -22,14 +22,14 @@ public class GameOfLifeClass
 
     public void CloneBoard()
     {
-        int i = 0;
-        foreach (int[] arr in board)
+        var i = 0;
+        foreach (var arr in _board)
         {
-            original[i] = new int[arr.Length];
-            int j = 0;
-            foreach (int num in arr)
+            _original[i] = new int[arr.Length];
+            var j = 0;
+            foreach (var num in arr)
             {
-                original[i][j++] = num;
+                _original[i][j++] = num;
             }
             i++;
         }
@@ -37,58 +37,58 @@ public class GameOfLifeClass
 
     private void GetNextState(int i, int j)
     {
-        if (original[i][j] == 1 && GetLiveNeighbors(i, j) < 2)
+        if (_original[i][j] == 1 && GetLiveNeighbors(i, j) < 2)
         {
-            board[i][j] = 0;
+            _board[i][j] = 0;
         }
 
-        else if (original[i][j] == 1 && GetLiveNeighbors(i, j) < 4)
+        else if (_original[i][j] == 1 && GetLiveNeighbors(i, j) < 4)
         {
-            board[i][j] = 1;
+            _board[i][j] = 1;
         }
 
-        else if (original[i][j] == 1 && GetLiveNeighbors(i, j) > 3)
+        else if (_original[i][j] == 1 && GetLiveNeighbors(i, j) > 3)
         {
-            board[i][j] = 0;
+            _board[i][j] = 0;
         }
 
-        else if (original[i][j] == 0 && GetLiveNeighbors(i, j) == 3)
+        else if (_original[i][j] == 0 && GetLiveNeighbors(i, j) == 3)
         {
-            board[i][j] = 1;
+            _board[i][j] = 1;
         }
     }
 
     private int GetLiveNeighbors(int i, int j)
     {
-        int count = 0;
-        Point northWest = new Point(i - 1, j - 1);
-        Point west = new Point(i, j - 1);
-        Point southWest = new Point(i + 1, j - 1);
-        Point south = new Point(i + 1, j);
-        Point southEast = new Point(i + 1, j + 1);
-        Point east = new Point(i, j + 1);
-        Point northEast = new Point(i - 1, j + 1);
-        Point north = new Point(i - 1, j);
-        points.Add(northWest);
-        points.Add(west);
-        points.Add(southWest);
-        points.Add(south);
-        points.Add(southEast);
-        points.Add(east);
-        points.Add(northEast);
-        points.Add(north);
-        foreach (Point p in points)
+        var count = 0;
+        var northWest = new Point(i - 1, j - 1);
+        var west = new Point(i, j - 1);
+        var southWest = new Point(i + 1, j - 1);
+        var south = new Point(i + 1, j);
+        var southEast = new Point(i + 1, j + 1);
+        var east = new Point(i, j + 1);
+        var northEast = new Point(i - 1, j + 1);
+        var north = new Point(i - 1, j);
+        _points.Add(northWest);
+        _points.Add(west);
+        _points.Add(southWest);
+        _points.Add(south);
+        _points.Add(southEast);
+        _points.Add(east);
+        _points.Add(northEast);
+        _points.Add(north);
+        foreach (var p in _points)
         {
             if (p.i >= 0 && p.j >= 0)
             {
-                if (p.i < original.Length && p.j < original[p.i].Length)
+                if (p.i < _original.Length && p.j < _original[p.i].Length)
                 {
-                    if (original[p.i][p.j] == 1)
+                    if (_original[p.i][p.j] == 1)
                         count++;
                 }
             }
         }
-        points.Clear();
+        _points.Clear();
         return count;
     }
 }

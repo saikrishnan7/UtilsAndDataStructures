@@ -14,8 +14,8 @@
 
         public void CreateAddNodeAfter(T data, SinglyLinkedListNode<T> currentNode) 
         {
-            SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<T>(data);
-            SinglyLinkedListNode<T> nextCopy = currentNode.Next;
+            var newNode = new SinglyLinkedListNode<T>(data);
+            var nextCopy = currentNode.Next;
             currentNode.Next = newNode;
             newNode.Next = nextCopy;
         }
@@ -29,16 +29,13 @@
         {
             if (obj == null)
                 return false;
-            else
-            {
-                SinglyLinkedListNode<T> node = (SinglyLinkedListNode<T>)obj;
-                return Data.Equals(node.Data);
-            }
+            var node = (SinglyLinkedListNode<T>)obj;
+            return Data.Equals(node.Data);
         }
 
         public override int GetHashCode()
         {
-            int hash = 97;
+            var hash = 97;
             hash = hash * 143 + (Data == null ? 0 : Data.GetHashCode());
             hash = hash * 143 + (Next == null ? 0 : Next.GetHashCode());
             return hash;

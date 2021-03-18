@@ -1,88 +1,83 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Problems
 {
-    public class LFUCache
+    public class LfuCache
     {
-        private readonly int capacity;
-        private Dictionary<int, LinkedListNode<Tuple<int, int, int>>> dict;
-        private Dictionary<int, LinkedList<Tuple<int, int, int>>> evictionTracker;
-        private int size;
-        private int minFreq;
-        public LFUCache(int capacity)
+        private readonly int _capacity;
+        private readonly Dictionary<int, LinkedListNode<Tuple<int, int, int>>> _dict;
+        private readonly Dictionary<int, LinkedList<Tuple<int, int, int>>> _evictionTracker;
+        private int _size;
+        private int _minFreq;
+        public LfuCache(int capacity)
         {
-            this.capacity = capacity;
-            dict = new Dictionary<int, LinkedListNode<Tuple<int, int, int>>>();
-            evictionTracker = new Dictionary<int, LinkedList<Tuple<int, int, int>>>();
-            size = 0;
-            minFreq = 0;
+            this._capacity = capacity;
+            _dict = new Dictionary<int, LinkedListNode<Tuple<int, int, int>>>();
+            _evictionTracker = new Dictionary<int, LinkedList<Tuple<int, int, int>>>();
+            _size = 0;
+            _minFreq = 0;
         }
 
         public int Get(int key)
         {
-            if (size == 0 || !dict.ContainsKey(key))
+            if (_size == 0 || !_dict.ContainsKey(key))
                 return -1;
-            else
+            var node = _dict[key];
+            var count = node.Value.Item3;
+            _evictionTracker[count].Remove(node);
+            if (!_evictionTracker.ContainsKey(count + 1))
+                _evictionTracker[count + 1] = new LinkedList<Tuple<int, int, int>>();
+            _evictionTracker[count + 1].AddLast(node);
+            _dict[key].Value = new Tuple<int, int, int>(key, node.Value.Item2, count + 1);
+            while (_evictionTracker[_minFreq].Count == 0)
             {
-                var node = dict[key];
-                int count = node.Value.Item3;
-                evictionTracker[count].Remove(node);
-                if (!evictionTracker.ContainsKey(count + 1))
-                    evictionTracker[count + 1] = new LinkedList<Tuple<int, int, int>>();
-                evictionTracker[count + 1].AddLast(node);
-                dict[key].Value = new Tuple<int, int, int>(key, node.Value.Item2, count + 1);
-                while (evictionTracker[minFreq].Count == 0)
-                {
-                    minFreq++;
-                }
-                return dict[key].Value.Item2;
+                _minFreq++;
             }
+            return _dict[key].Value.Item2;
         }
 
         public void Put(int key, int value)
         {
-            if (capacity > 0)
+            if (_capacity > 0)
             {
-                if (size < capacity || dict.ContainsKey(key))
+                if (_size < _capacity || _dict.ContainsKey(key))
                 {
-                    if (!dict.ContainsKey(key))
+                    if (!_dict.ContainsKey(key))
                     {
                         var tuple = new Tuple<int, int, int>(key, value, 1);
                         var node = new LinkedListNode<Tuple<int, int, int>>(tuple);
-                        dict.Add(key, node);
-                        if (!evictionTracker.ContainsKey(1))
-                            evictionTracker[1] = new LinkedList<Tuple<int, int, int>>();
-                        evictionTracker[1].AddLast(node);
-                        minFreq = 1;
-                        size++;
+                        _dict.Add(key, node);
+                        if (!_evictionTracker.ContainsKey(1))
+                            _evictionTracker[1] = new LinkedList<Tuple<int, int, int>>();
+                        _evictionTracker[1].AddLast(node);
+                        _minFreq = 1;
+                        _size++;
                     }
                     else
                     {
-                        var node = dict[key];
-                        int count = node.Value.Item3;
-                        evictionTracker[count].Remove(node);
-                        if (!evictionTracker.ContainsKey(count + 1))
-                            evictionTracker[count + 1] = new LinkedList<Tuple<int, int, int>>();
-                        evictionTracker[count + 1].AddLast(node);
-                        dict[key].Value = new Tuple<int, int, int>(key, value, count + 1);
+                        var node = _dict[key];
+                        var count = node.Value.Item3;
+                        _evictionTracker[count].Remove(node);
+                        if (!_evictionTracker.ContainsKey(count + 1))
+                            _evictionTracker[count + 1] = new LinkedList<Tuple<int, int, int>>();
+                        _evictionTracker[count + 1].AddLast(node);
+                        _dict[key].Value = new Tuple<int, int, int>(key, value, count + 1);
                     } 
                 }
                 else
                 {
-                    var nodeToBeRemoved = evictionTracker[minFreq].First;
-                    Console.WriteLine(minFreq);
-                    evictionTracker[minFreq].RemoveFirst();
+                    var nodeToBeRemoved = _evictionTracker[_minFreq].First;
+                    Console.WriteLine(_minFreq);
+                    _evictionTracker[_minFreq].RemoveFirst();
                     //Console.WriteLine(minFreq);
-                    dict.Remove(nodeToBeRemoved.Value.Item1);
-                    size--;
+                    _dict.Remove(nodeToBeRemoved.Value.Item1);
+                    _size--;
                     Put(key, value);
                 }
-                while (evictionTracker[minFreq].Count == 0)
+                while (_evictionTracker[_minFreq].Count == 0)
                 {
-                    minFreq++;
+                    _minFreq++;
                 }
             }
         }

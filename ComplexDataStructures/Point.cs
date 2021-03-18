@@ -1,27 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ComplexDataStructures
 {
     public class Point : IComparable<Point>
     {
-        public int x { get; private set; }
-        public int y { get; private set; }
-        public int val { get; private set; }
+        public int X { get; private set; }
+        public int Y { get; private set; }
+        public int Val { get; private set; }
 
         public Point(int x, int y, int val)
         {
-            this.x = x;
-            this.y = y;
-            this.val = val;
+            this.X = x;
+            this.Y = y;
+            this.Val = val;
         }
         
         public int CompareTo(Point that)
         {
-            return val.CompareTo(that.val);
+            return Val.CompareTo(that.Val);
         }
     }
 }

@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 namespace SampleProblemsTests
 {
     [TestClass]
-    public class CtCiDPTests
+    public class CtCiDpTests
     {
        [TestMethod]
        public void TestClimbStairs()
         {
-            var dpTest = new CtCiDP();
-            int result = dpTest.TripleStep(15);
+            var dpTest = new CtCiDp();
+            var result = dpTest.TripleStep(15);
             Assert.AreEqual(result, 13);
         }
     }

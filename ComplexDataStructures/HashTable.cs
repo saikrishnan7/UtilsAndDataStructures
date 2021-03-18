@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ComplexDataStructures
+﻿namespace ComplexDataStructures
 {
-    class HashTable
+    internal class HashTable
     {
     }
 }

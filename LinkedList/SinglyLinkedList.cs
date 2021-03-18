@@ -1,10 +1,7 @@
 ﻿using DataStructureHelper;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace LinkedList
 {
@@ -24,7 +21,7 @@ namespace LinkedList
 
         public SinglyLinkedList<T> InsertFirst(T data)
         {
-            SinglyLinkedListNode<T> node = new SinglyLinkedListNode<T>(data);
+            var node = new SinglyLinkedListNode<T>(data);
             if (Head == null)
             {
                 Head = Tail = node;
@@ -40,7 +37,7 @@ namespace LinkedList
 
         public SinglyLinkedList<T> InsertLast(T data)
         {
-            SinglyLinkedListNode<T> node = new SinglyLinkedListNode<T>(data);
+            var node = new SinglyLinkedListNode<T>(data);
             if (Tail == null)
             {
                 Head = Tail = node;
@@ -57,7 +54,7 @@ namespace LinkedList
         public SinglyLinkedList<T> RemoveLast()
         {
             var node = Head;
-            for(int i = 0; i < Length - 2; i++)
+            for(var i = 0; i < Length - 2; i++)
             {
                 node = node.Next;
             }
@@ -104,8 +101,8 @@ namespace LinkedList
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            SinglyLinkedListNode<T> head = Head;
+            var sb = new StringBuilder();
+            var head = Head;
             while (head != null)
             {
                 sb.Append(head.Data);
@@ -119,27 +116,24 @@ namespace LinkedList
         {
             if (obj == null)
                 return false;
-            else
+            var list = (SinglyLinkedList<T>)obj;
+            var n1 = Head;
+            var n2 = list.Head;
+            while (n1 != null)
             {
-                SinglyLinkedList<T> list = (SinglyLinkedList<T>)obj;
-                SinglyLinkedListNode<T> n1 = Head;
-                SinglyLinkedListNode<T> n2 = list.Head;
-                while (n1 != null)
+                if (n1 != n2)
                 {
-                    if (n1 != n2)
-                    {
-                        return false;
-                    }
-                    n1 = n1.Next;
-                    n2 = n2.Next;
+                    return false;
                 }
-                return true;
+                n1 = n1.Next;
+                n2 = n2.Next;
             }
+            return true;
         }
 
         public override int GetHashCode()
         {
-            int hash = 97;
+            var hash = 97;
             hash = hash * 143 + (Head == null ? 0 : Head.GetHashCode());
             hash = hash * 143 + (Tail == null ? 0 : Tail.GetHashCode());
             hash = hash * 143 + (Length.GetHashCode());

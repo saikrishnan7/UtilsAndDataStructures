@@ -1,16 +1,13 @@
 ﻿using LinkedList;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataStructuresRun
 {
     public class DoublyLinkedListTester
     {
-        private readonly int[] inputArray1 = { 1, 2, 3, 4, 5, 6 };
-        private readonly string[] inputArray2 = { "a", "b", "c", "e", "f" };
+        private readonly int[] _inputArray1 = { 1, 2, 3, 4, 5, 6 };
+        private readonly string[] _inputArray2 = { "a", "b", "c", "e", "f" };
 
         public void Go()
         {
@@ -22,39 +19,39 @@ namespace DataStructuresRun
         }
         private void CreateListByFrontInsertThenRemoveFirst()
         {
-            DoubleCircularLinkedList<int> DoubleCircularLinkedList = new DoubleCircularLinkedList<int>();
-            foreach (int num in inputArray1)
+            var doubleCircularLinkedList = new DoubleCircularLinkedList<int>();
+            foreach (var num in _inputArray1)
             {
-                DoubleCircularLinkedList.InsertFirst(num);
+                doubleCircularLinkedList.InsertFirst(num);
             }
-            Console.WriteLine(DoubleCircularLinkedList.RemoveFirst());
+            Console.WriteLine(doubleCircularLinkedList.RemoveFirst());
         }
 
         private void CreateListByBackInsertThenRemoveLast()
         {
-            DoubleCircularLinkedList<int> DoubleCircularLinkedList = new DoubleCircularLinkedList<int>();
-            foreach (int num in inputArray1)
+            var doubleCircularLinkedList = new DoubleCircularLinkedList<int>();
+            foreach (var num in _inputArray1)
             {
-                DoubleCircularLinkedList.InsertLast(num);
+                doubleCircularLinkedList.InsertLast(num);
             }
-            Console.WriteLine(DoubleCircularLinkedList.RemoveLast());
+            Console.WriteLine(doubleCircularLinkedList.RemoveLast());
         }
 
         private void MergeLists()
         {
-            DoubleCircularLinkedList<string> list1 = new DoubleCircularLinkedList<string>();
-            foreach (string str in inputArray2)
+            var list1 = new DoubleCircularLinkedList<string>();
+            foreach (var str in _inputArray2)
             {
                 list1.InsertLast(str);
             }
-            DoubleCircularLinkedList<string> list2 = new DoubleCircularLinkedList<string>();
-            foreach (string str in inputArray2)
+            var list2 = new DoubleCircularLinkedList<string>();
+            foreach (var str in _inputArray2)
             {
                 list2.InsertFirst(str);
             }
-            DoubleCircularLinkedList<string> merged = list1.MergeWith(list2);
+            var merged = list1.MergeWith(list2);
             //Console.WriteLine(merged);
-            foreach(string s in merged)
+            foreach(var s in merged)
             {
                 Console.WriteLine(s);
             }
@@ -62,13 +59,13 @@ namespace DataStructuresRun
 
         private void TestEquals()
         {
-            DoubleCircularLinkedList<int> list1 = new DoubleCircularLinkedList<int>();
-            foreach (int num in inputArray1)
+            var list1 = new DoubleCircularLinkedList<int>();
+            foreach (var num in _inputArray1)
             {
                 list1.InsertLast(num);
             }
-            DoubleCircularLinkedList<int> list2 = new DoubleCircularLinkedList<int>();
-            foreach (int num in inputArray1.Reverse())
+            var list2 = new DoubleCircularLinkedList<int>();
+            foreach (var num in _inputArray1.Reverse())
             {
                 list2.InsertFirst(num);
             }

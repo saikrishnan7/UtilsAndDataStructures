@@ -23,7 +23,7 @@ namespace SampleProblemsTests
         [TestMethod]
         public void ThreeSumTest()
         {
-            SampleProblems prob = new SampleProblems();
+            var prob = new SampleProblems();
             int[] input = { -2, 0, 0, 2, 2 }; //-4,-1,-1,0,1,2
             var solutionSet = prob.ThreeSum(input);
             Assert.AreEqual(solutionSet.Count, 1);
@@ -35,7 +35,7 @@ namespace SampleProblemsTests
         [TestMethod]
         public void HammingTest()
         {
-            SampleProblems prob = new SampleProblems();
+            var prob = new SampleProblems();
 
             Assert.AreEqual(prob.HammingDistance(1, 4), 2);
         }
@@ -43,54 +43,54 @@ namespace SampleProblemsTests
         [TestMethod]
         public void ToLowerTest()
         {
-            SampleProblems prob = new SampleProblems();
+            var prob = new SampleProblems();
             Assert.AreEqual(prob.ToLowerCase("HELLO"), "hello");
         }
 
         [TestMethod]
         public void PeakIndexInMountainArrayTest()
         {
-            int[] A = { 0, 1, 0 };
-            SampleProblems prob = new SampleProblems();
-            Assert.AreEqual(prob.PeakIndexInMountainArray(A), 1);
+            int[] a = { 0, 1, 0 };
+            var prob = new SampleProblems();
+            Assert.AreEqual(prob.PeakIndexInMountainArray(a), 1);
         }
 
         [TestMethod]
         public void CountAndSayTest()
         {
-            SampleProblems prob = new SampleProblems();
+            var prob = new SampleProblems();
             Assert.AreEqual(prob.CountAndSay(6), "312211");
         }
         [TestMethod]
-        public void strStrTest()
+        public void StrStrTest()
         {
-            SampleProblems prob = new SampleProblems();
+            var prob = new SampleProblems();
             Assert.AreEqual(prob.StrStr("mississippi", "issip"), 4);
         }
         [TestMethod]
         public void ColumnNumberTest()
         {
-            SampleProblems prob = new SampleProblems();
+            var prob = new SampleProblems();
             Assert.AreEqual(prob.TitleToNumber("ZY"), 701);
         }
 
         [TestMethod]
         public void CountSubstringTest()
         {
-            SampleProblems prob = new SampleProblems();
+            var prob = new SampleProblems();
             Assert.AreEqual(prob.CountSubstrings("xkjkqlajprjwefilxgpdpebieswu"), 30);
         }
         [TestMethod]
         public void LevelOrderTest()
         {
-            TreeNode root = new TreeNode(3)
+            var root = new TreeNode(3)
             {
                 right = new TreeNode(19),
                 left = new TreeNode(20)
             };
             root.right.left = new TreeNode(5);
             root.right.right = new TreeNode(18);
-            SampleProblems prob = new SampleProblems();
+            var prob = new SampleProblems();
             Assert.AreEqual(prob.LevelOrder(root)[0][0], 3);
             Assert.AreEqual(prob.LevelOrder(root)[1][0], 20);
             Assert.AreEqual(prob.LevelOrder(root)[1][1], 19);
@@ -100,15 +100,15 @@ namespace SampleProblemsTests
         [TestMethod]
         public void MoveZeroesTest()
         {
-            int[] a = new int[] { 1, 10, -1, 11, 5, 0, -7, 0, 25, -35 };
-            SampleProblems prob = new SampleProblems();
+            var a = new int[] { 1, 10, -1, 11, 5, 0, -7, 0, 25, -35 };
+            var prob = new SampleProblems();
             Assert.AreEqual(prob.MoveZeroes(a)[3], 10);
         }
         [TestMethod]
         public void QuickSortTest()
         {
-            int[] a = new int[] { 55, 23, 2, 26, 29, 11, 8, 78, 24, 42, 48 };
-            SampleProblems prob = new SampleProblems();
+            var a = new int[] { 55, 23, 2, 26, 29, 11, 8, 78, 24, 42, 48 };
+            var prob = new SampleProblems();
             prob.QuickSortIterative(a);
             Assert.AreEqual(a[10], 78);
             Assert.AreEqual(a[9], 55);
@@ -116,8 +116,8 @@ namespace SampleProblemsTests
         [TestMethod]
         public void RotateArrayTest()
         {
-            int[] a = new int[] { 55, 23, 2, 26, 29, 11, 8, 78, 24, 42, 48 };
-            SampleProblems prob = new SampleProblems();
+            var a = new int[] { 55, 23, 2, 26, 29, 11, 8, 78, 24, 42, 48 };
+            var prob = new SampleProblems();
             prob.RotateArray(a, 2);
             Assert.AreEqual(a[10], 24);
             Assert.AreEqual(a[9], 78);
@@ -126,18 +126,18 @@ namespace SampleProblemsTests
         public void MinMaxIndexTest()
         {
             //int[] a = new int[] { 1,1,1,1,1,1,1,1,1,1,1,2,5,5,5,5,5,5,5,5,5,5,8,8,8,8,8,8,9,9,9,9,9,9,9,9,11,11,11,11 };
-            int[] a = new int[] { 1, 1, 2 };
-            SampleProblems prob = new SampleProblems();
-            Tuple<int, int> interval = prob.GetMinMaxIndex(a, 2);
+            var a = new int[] { 1, 1, 2 };
+            var prob = new SampleProblems();
+            var interval = prob.GetMinMaxIndex(a, 2);
             Assert.AreEqual(interval.Item1, 2);
             Assert.AreEqual(interval.Item2, 2);
         }
         [TestMethod]
         public void BuySellStockTest()
         {
-            int[] a = new int[] { 7, 1, 2, 8, 6, 11, 2, 8 };
-            SampleProblems prob = new SampleProblems();
-            Tuple<int, int> interval = prob.GetBestBuySell(a);
+            var a = new int[] { 7, 1, 2, 8, 6, 11, 2, 8 };
+            var prob = new SampleProblems();
+            var interval = prob.GetBestBuySell(a);
             Assert.AreEqual(interval.Item1, 1);
             Assert.AreEqual(interval.Item2, 11);
         }
@@ -150,7 +150,7 @@ namespace SampleProblemsTests
                 new Tuple<int, int>(1, 5), new Tuple<int, int>(3, 7), new Tuple<int, int>(4, 6),
                 new Tuple<int, int>(6, 8), new Tuple<int, int>(10, 12), new Tuple<int, int>(11, 15)
             };
-            SampleProblems prob = new SampleProblems();
+            var prob = new SampleProblems();
             var mergedIntervals = prob.MergeIntervals(intervals);
             Assert.IsTrue(mergedIntervals.Count == 2);
             //Assert.IsTrue(mergedIntervals[0].Item2 == 3);
@@ -164,8 +164,8 @@ namespace SampleProblemsTests
         [TestMethod]
         public void TwoSumTest()
         {
-            int[] a = new int[] { 7, 1, 2, 8, 6, 11, 2, 8 };
-            SampleProblems prob = new SampleProblems();
+            var a = new int[] { 7, 1, 2, 8, 6, 11, 2, 8 };
+            var prob = new SampleProblems();
             Assert.IsFalse(prob.IsValidTwoSum(a, 21));
         }
 
@@ -173,38 +173,38 @@ namespace SampleProblemsTests
         public void FindPythTripletsTest()
         {
             int[] nums = { 3, 4, 5, 12, 13, 6, 8, 10, 9, 16, 25 };
-            SampleProblems prob = new SampleProblems();
+            var prob = new SampleProblems();
             Assert.IsTrue(prob.FindPythTriplets(nums).Count > 1);
         }
         [TestMethod]
         public void IntegerDivisionTest()
         {
-            int val = new SampleProblems().IntegerDivision(-40, -4);
+            var val = new SampleProblems().IntegerDivision(-40, -4);
             Assert.IsTrue(val == 10);
         }
         [TestMethod]
         public void ArrayProductTest()
         {
             int[] a = { 8, 2, 3, 4, 5, 6, 7, 7 };
-            int[] result = new SampleProblems().ProductOfAllButSelf(a);
+            var result = new SampleProblems().ProductOfAllButSelf(a);
             Assert.AreEqual(result[3], 7 * 7 * 8 * 60 * 3);
         }
         [TestMethod]
         public void CellCompeteTest()
         {
             int[] a = { 1, 1, 1, 0, 1, 1, 1, 1 };
-            int days = 2;
-            int[] result = new SampleProblems().CellCompete(a, days);
+            var days = 2;
+            var result = new SampleProblems().CellCompete(a, days);
             Assert.AreEqual(result.Length, 8);
         }
         [TestMethod]
         public void LadderLengthTest()
         {
-            string beginWord = "hot";
-            string endWord = "dog";
+            var beginWord = "hot";
+            var endWord = "dog";
             var words = new List<string>() { "hot", "dog", "cog", "pot", "dot" };
             var sp = new SampleProblems();
-            int ladder = sp.LadderLength(beginWord, endWord, words);
+            var ladder = sp.LadderLength(beginWord, endWord, words);
             Assert.AreEqual(ladder, 3);
         }
 
@@ -212,7 +212,7 @@ namespace SampleProblemsTests
         public void CountIterativeTest()
         {
             var sp = new SampleProblems();
-            int ans = sp.CountIterative(6, 10);
+            var ans = sp.CountIterative(6, 10);
             Assert.IsFalse(ans == 0);
         }
 
@@ -220,7 +220,7 @@ namespace SampleProblemsTests
         public void CountRecursiveTest()
         {
             var sp = new SampleProblems();
-            int ans = sp.CountRecursive(6, 10);
+            var ans = sp.CountRecursive(6, 10);
             Assert.IsTrue(ans == sp.CountIterative(6, 10));
         }
 
@@ -234,7 +234,7 @@ namespace SampleProblemsTests
         [TestMethod]
         public void RotateImage()
         {
-            int[,] matrix = new int[,]
+            var matrix = new int[,]
             {
                 { 1, 2, 3 },
                 { 4, 5, 6 },
@@ -257,7 +257,7 @@ namespace SampleProblemsTests
         public void TestSearch()
         {
             char[,] board = { { 'C', 'A', 'A' }, { 'A', 'A', 'A' }, { 'B', 'C', 'D' } };
-            string searchWord = "AAB";
+            var searchWord = "AAB";
             var sp = new SampleProblems();
             Assert.IsTrue(sp.Exist(board, searchWord));
         }
@@ -273,7 +273,7 @@ namespace SampleProblemsTests
         public void TestReverseWords()
         {
             var sp = new SampleProblems();
-            char[] input = new char[] { 't', 'h', 'e', ' ', 's', 'k', 'y', ' ', 'i', 's', ' ', 'b', 'l', 'u', 'e' };
+            var input = new char[] { 't', 'h', 'e', ' ', 's', 'k', 'y', ' ', 'i', 's', ' ', 'b', 'l', 'u', 'e' };
             sp.ReverseWords(input);
             Assert.IsTrue(input[0] == 'b');
         }
@@ -282,7 +282,7 @@ namespace SampleProblemsTests
         public void TestStringMultiply()
         {
             var sp = new SampleProblems();
-            string val = sp.Multiply("935", "75");
+            var val = sp.Multiply("935", "75");
             Assert.IsTrue(val == "70125");
         }
 
@@ -312,9 +312,9 @@ namespace SampleProblemsTests
         }
 
         [TestMethod]
-        public void LFUCacheTest()
+        public void LfuCacheTest()
         {
-            var cache = new LFUCache(2);
+            var cache = new LfuCache(2);
             cache.Put(2, 1);
             cache.Put(2, 2);
             cache.Get(2);
@@ -329,23 +329,23 @@ namespace SampleProblemsTests
         [TestMethod]
         public void RotatedSearchWithDuplicated()
         {
-            SampleProblems sp = new SampleProblems();
-            int[] arr = new int[2] { 1, 3 };
-            int ans = sp.SearchHelper(arr, 3, 0, 1);
+            var sp = new SampleProblems();
+            var arr = new int[2] { 1, 3 };
+            var ans = sp.SearchHelper(arr, 3, 0, 1);
             Assert.IsTrue(ans != -1);
         }
 
         [TestMethod]
         public void WordBreakTest()
         {
-            SampleProblems sp = new SampleProblems();
-            bool ans = sp.WordBreak("catsandog", new List<string> { "cats", "sand", "and", "dog" });
+            var sp = new SampleProblems();
+            var ans = sp.WordBreak("catsandog", new List<string> { "cats", "sand", "and", "dog" });
             Assert.IsFalse(ans);
         }
         [TestMethod]
         public void PacificAtlanticTest()
         {
-            SampleProblems sp = new SampleProblems();
+            var sp = new SampleProblems();
             var ans = sp.PacificAtlantic(new int[,] { { 1, 2, 2, 3, 5 }, { 3, 2, 3, 4, 4 }, { 2, 4, 5, 3, 1 }, { 6, 7, 1, 4, 5 }, { 5, 1, 1, 2, 4 }});
             Assert.IsTrue(ans.Count > 1);
         }
@@ -353,7 +353,7 @@ namespace SampleProblemsTests
         [TestMethod]
         public void MinPathSumTest()
         {
-            SampleProblems sp = new SampleProblems();
+            var sp = new SampleProblems();
             var ans = sp.MinPathSum(new int[,] { { 1, 3, 1 }, {1, 5, 1 }, { 4, 2, 1 }});
             Assert.IsTrue(ans == 7);
         }
@@ -361,7 +361,7 @@ namespace SampleProblemsTests
         [TestMethod]
         public void MinTotalTest()
         {
-            SampleProblems sp = new SampleProblems();
+            var sp = new SampleProblems();
             var input = new List<IList<int>>();
             var row1 = new List<int>() { 2 };
             var row2 = new List<int>() { 3, 4 };
@@ -378,17 +378,17 @@ namespace SampleProblemsTests
         [TestMethod]
         public void CoinChangeTest()
         {
-            SampleProblems sp = new SampleProblems();
+            var sp = new SampleProblems();
             var coins = new int[] { 2 };
-            int amount = 3;
-            int ans = sp.CoinChangeRecursiveTopDown(coins, amount);
+            var amount = 3;
+            var ans = sp.CoinChangeRecursiveTopDown(coins, amount);
             Assert.IsTrue(ans == -1);
         }
 
         [TestMethod]
         public void FactorCombinations()
         {
-            SampleProblems sp = new SampleProblems();
+            var sp = new SampleProblems();
             var ans = sp.GetFactors(32);
             Assert.IsTrue(ans.Count == 6);
         }
@@ -396,15 +396,15 @@ namespace SampleProblemsTests
         [TestMethod]
         public void CombinationsSum()
         {
-            SampleProblems sp = new SampleProblems();
+            var sp = new SampleProblems();
             var ans = sp.CombinationSum(new int[] { 1, 2 }, 2);
             Assert.IsTrue(ans.Count == 2);
         }
 
         [TestMethod]
-        public void IPAddressTest()
+        public void IpAddressTest()
         {
-            SampleProblems sp = new SampleProblems();
+            var sp = new SampleProblems();
             var ans = sp.RestoreIpAddresses("10232548");
             Assert.IsTrue(ans.Count == 8);
         }
@@ -412,15 +412,15 @@ namespace SampleProblemsTests
         [TestMethod]
         public void BracketsTest()
         {
-            SampleProblems sp = new SampleProblems();
-            var ans = sp.RemoveInvalidParenthesesII("()())()");
+            var sp = new SampleProblems();
+            var ans = sp.RemoveInvalidParenthesesIi("()())()");
             Assert.IsTrue(ans.Count == 2);
         }
 
         [TestMethod]
         public void GetAllValidExpressionsTest()
         {
-            SampleProblems sp = new SampleProblems();
+            var sp = new SampleProblems();
             var ans = sp.GetAllValidExpressions("123");
             Assert.IsTrue(ans.Count == 4);
         }
@@ -428,7 +428,7 @@ namespace SampleProblemsTests
         [TestMethod]
         public void DifferByOneBitTest()
         {
-            SampleProblems sp = new SampleProblems();
+            var sp = new SampleProblems();
             var ans = sp.DifferAtOneBitPos(4, 12);
             Assert.IsTrue(ans);
         }
@@ -436,7 +436,7 @@ namespace SampleProblemsTests
         [TestMethod]
         public void GrayCodeTest()
         {
-            SampleProblems sp = new SampleProblems();
+            var sp = new SampleProblems();
             var ans = sp.GrayCode(2);
             Assert.AreEqual(ans.Count, 4);
         }
@@ -444,7 +444,7 @@ namespace SampleProblemsTests
         [TestMethod]
         public void SubsetWithDupTest()
         {
-            SampleProblems sp = new SampleProblems();
+            var sp = new SampleProblems();
             var ans = sp.SubsetsWithDup(new int[] { 1, 2, 2 });
             Assert.AreEqual(ans.Count, 6);
         }
@@ -452,7 +452,7 @@ namespace SampleProblemsTests
         [TestMethod]
         public void NextPermTest()
         {
-            SampleProblems sp = new SampleProblems();
+            var sp = new SampleProblems();
             var ans = sp.GetPermutation(3, 3);
             Assert.AreEqual("213", ans);
         }
@@ -460,7 +460,7 @@ namespace SampleProblemsTests
         [TestMethod]
         public void NextPermTest2()
         {
-            SampleProblems sp = new SampleProblems();
+            var sp = new SampleProblems();
             var nums = new int[] { 1, 2, 9, 8, 7, 6, 5, 4};
             sp.NextPermutation(nums);
             Assert.AreEqual(nums.Length, 8);
@@ -469,8 +469,8 @@ namespace SampleProblemsTests
         [TestMethod]
         public void GameOfLifeTest()
         {
-            GameOfLifeClass golc = new GameOfLifeClass();
-            int[][] board = new int[4][];
+            var golc = new GameOfLifeClass();
+            var board = new int[4][];
             board[0] = new int[] { 0, 1, 0 };
             board[1] = new int[] { 0, 0, 1 };
             board[2] = new int[] { 1, 1, 1 };
@@ -482,9 +482,9 @@ namespace SampleProblemsTests
         [TestMethod]
         public void TestTopKFrequent()
         {
-            SampleProblems sp = new SampleProblems();
-            int k = 2;
-            int[] input = new int[] { 1, 2 };
+            var sp = new SampleProblems();
+            var k = 2;
+            var input = new int[] { 1, 2 };
             var ans = sp.TopKFrequent(input, k);
             Assert.IsTrue(ans.Count == 2);
         }
@@ -492,8 +492,8 @@ namespace SampleProblemsTests
         [TestMethod]
         public void TestKClosest()
         {
-            SampleProblems sp = new SampleProblems();
-            int[] arr = new int[] { 0, 2, 2, 3, 4, 5, 5, 6, 6, 6, 7, 8, 9, 11, 11, 15, 16, 19, 20, 21, 22, 22, 22, 23, 25, 26, 27, 28, 28, 28, 29, 29, 29, 31, 31, 31, 32, 34, 34, 34, 35, 35, 35, 38, 40, 41, 42, 45, 45, 45, 46, 49, 53, 53, 54, 58, 61, 62, 63, 63, 65, 66, 66, 67, 69, 70, 71, 72, 73, 74, 74, 74, 74, 75, 76, 76, 77, 77, 79, 80, 82, 82, 83, 86, 86, 86, 87, 89, 90, 90, 91, 92, 95, 96, 96, 97, 98, 98, 98, 99 };
+            var sp = new SampleProblems();
+            var arr = new int[] { 0, 2, 2, 3, 4, 5, 5, 6, 6, 6, 7, 8, 9, 11, 11, 15, 16, 19, 20, 21, 22, 22, 22, 23, 25, 26, 27, 28, 28, 28, 29, 29, 29, 31, 31, 31, 32, 34, 34, 34, 35, 35, 35, 38, 40, 41, 42, 45, 45, 45, 46, 49, 53, 53, 54, 58, 61, 62, 63, 63, 65, 66, 66, 67, 69, 70, 71, 72, 73, 74, 74, 74, 74, 75, 76, 76, 77, 77, 79, 80, 82, 82, 83, 86, 86, 86, 87, 89, 90, 90, 91, 92, 95, 96, 96, 97, 98, 98, 98, 99 };
 
             var ans = sp.FindClosestElements(arr, 28, 57);
             Assert.AreEqual(ans.Count, 28);
@@ -502,16 +502,16 @@ namespace SampleProblemsTests
         [TestMethod]
         public void CountLengthTest()
         {
-            SampleProblems sp = new SampleProblems();
-            int ans = sp.Solution("Forget  CVs..Save time . x x");
+            var sp = new SampleProblems();
+            var ans = sp.Solution("Forget  CVs..Save time . x x");
             Assert.IsTrue(ans == 2);
         }
 
         [TestMethod]
         public void LongestPalindromeTest()
         {
-            SampleProblems sp = new SampleProblems();
-            string ans = sp.LongestPalindrome("babad");
+            var sp = new SampleProblems();
+            var ans = sp.LongestPalindrome("babad");
             Assert.AreEqual(ans.Length, 3);
         }
 
@@ -524,9 +524,9 @@ namespace SampleProblemsTests
         [TestMethod]
         public void OnesAndZeroesTest()
         {
-            SampleProblems sp = new SampleProblems();
-            int[,] matrix = new int[,] { { 0, 0, 0 }, { 0, 1, 0 }, { 1, 1, 1 } };            
-            int[,] ans = sp.UpdateMatrix(matrix);
+            var sp = new SampleProblems();
+            var matrix = new int[,] { { 0, 0, 0 }, { 0, 1, 0 }, { 1, 1, 1 } };            
+            var ans = sp.UpdateMatrix(matrix);
             Assert.IsTrue(ans.GetLength(0) == 3);
         }
 

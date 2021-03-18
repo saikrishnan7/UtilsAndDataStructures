@@ -1,9 +1,4 @@
-﻿using DataStructureHelper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ComplexDataStructures
 {
@@ -11,7 +6,7 @@ namespace ComplexDataStructures
     {
         private class TrieNode
         {
-            internal Dictionary<char, TrieNode> children;
+            internal readonly Dictionary<char, TrieNode> children;
 
             public TrieNode()
             {
@@ -19,44 +14,40 @@ namespace ComplexDataStructures
             }
 
             internal bool IsWord { set; get; }
-
-            internal string Word { set; get; }
-
         }
-        private readonly TrieNode root;
+        private readonly TrieNode _root;
         public Trie()
         {
-            root = new TrieNode();
+            _root = new TrieNode();
         }
 
         public int Size { get; private set; }
 
         public void Insert(string word)
         {
-            TrieNode current = root;
-            for(int i=0; i < word.Length; i++)
+            var current = _root;
+            foreach (var t in word)
             {
-                TrieNode newNode = null;
-                if (!current.children.ContainsKey(word[i]))
+                TrieNode newNode;
+                if (!current.children.ContainsKey(t))
                 {
                     newNode = new TrieNode();
-                    current.children.Add(word[i], newNode);
+                    current.children.Add(t, newNode);
                 }
                 else
                 {
-                    newNode = current.children[word[i]];
+                    newNode = current.children[t];
                 }
                 current = newNode;
             }
             current.IsWord = true;
-            current.Word = word;
             Size++;
         }
 
         public bool Search(string word)
         {
-            TrieNode temp = SearchHelper(word);
-            return temp != null ? temp.IsWord : false;
+            var temp = SearchHelper(word);
+            return temp?.IsWord ?? false;
         }
 
         public bool StartsWith(string prefix)
@@ -66,9 +57,9 @@ namespace ComplexDataStructures
 
         private TrieNode SearchHelper(string word)
         {
-            TrieNode current = root;
-            bool isNotFound = false;
-            for (int i = 0; i < word.Length && !isNotFound; i++)
+            var current = _root;
+            var isNotFound = false;
+            for (var i = 0; i < word.Length && !isNotFound; i++)
             {
                 TrieNode newNode = null;
                 if (!current.children.ContainsKey(word[i]))

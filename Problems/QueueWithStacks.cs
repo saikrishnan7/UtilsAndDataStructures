@@ -5,14 +5,14 @@ namespace Problems
 {
     public class QueueWithStacks<T>
     {
-        private Stack<T> addStack;
-        private Stack<T> retrieveStack;
+        private readonly Stack<T> _addStack;
+        private readonly Stack<T> _retrieveStack;
         private int _size;
 
         public QueueWithStacks()
         {
-            addStack = new Stack<T>();
-            retrieveStack = new Stack<T>();
+            _addStack = new Stack<T>();
+            _retrieveStack = new Stack<T>();
             _size = 0;
         }
 
@@ -22,27 +22,25 @@ namespace Problems
         {
             if (_size == 0)
                 throw new InvalidOperationException("Cannot peek an empty Queue");
-            if (retrieveStack.Size == 0)
+            if (_retrieveStack.Size == 0)
             {
-                if (addStack.Size != 0)
+                if (_addStack.Size != 0)
                 {
-                    foreach (T t in addStack)
+                    foreach (var t in _addStack)
                     {
-                        retrieveStack.Push(t);
+                        _retrieveStack.Push(t);
                     }
-                    return retrieveStack.Peek();
+                    return _retrieveStack.Peek();
                 }
-                else
-                {
-                    throw new InvalidOperationException("Cannot peek an empty Queue");
-                }
+
+                throw new InvalidOperationException("Cannot peek an empty Queue");
             }
-            return retrieveStack.Peek();
+            return _retrieveStack.Peek();
         }
 
         public void Enqueue(T item)
         {
-            addStack.Push(item);
+            _addStack.Push(item);
             _size++;
         }
 
@@ -50,23 +48,21 @@ namespace Problems
         {
             if (_size == 0)
                 throw new InvalidOperationException("Cannot pop an empty Queue");
-            if (retrieveStack.Size == 0)
+            if (_retrieveStack.Size == 0)
             {
-                if (addStack.Size != 0)
+                if (_addStack.Size != 0)
                 {
-                    foreach (T t in addStack)
+                    foreach (var t in _addStack)
                     {
-                        retrieveStack.Push(t);
+                        _retrieveStack.Push(t);
                     }
-                    return retrieveStack.Pop();
+                    return _retrieveStack.Pop();
                 }
-                else
-                {
-                    throw new InvalidOperationException("Cannot pop an empty Queue");
-                }
+
+                throw new InvalidOperationException("Cannot pop an empty Queue");
             }
             _size--;
-            return retrieveStack.Pop();
+            return _retrieveStack.Pop();
         }
 
         public bool IsEmpty()

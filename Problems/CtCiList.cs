@@ -1,10 +1,6 @@
 ﻿using DataStructureHelper;
 using LinkedList;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Problems
 {
@@ -12,8 +8,8 @@ namespace Problems
     {
         public SinglyLinkedList<T> RemoveDuplicateNodes<T>(SinglyLinkedList<T> originalList)
         {
-            SinglyLinkedListNode<T> ptr = originalList.Head;
-            SinglyLinkedListNode<T> runner = originalList.Head;
+            var ptr = originalList.Head;
+            var runner = originalList.Head;
 
             while (ptr != null)
             {
@@ -36,9 +32,9 @@ namespace Problems
 
         public SinglyLinkedList<T> RemoveKthFromLast<T>(SinglyLinkedList<T> originalList, int k)
         {
-            SinglyLinkedListNode<T> current = originalList.Head;
-            SinglyLinkedListNode<T> kth = originalList.Head;
-            int count = 0;
+            var current = originalList.Head;
+            var kth = originalList.Head;
+            var count = 0;
             while (count < k)
             {
                 kth = kth.Next;
@@ -61,8 +57,8 @@ namespace Problems
 
         public SinglyLinkedList<int> PartitionList(SinglyLinkedList<int> list, int value)
         {
-            SinglyLinkedList<int> newList = new SinglyLinkedList<int>();
-            SinglyLinkedListNode<int> curr = list.Head;
+            var newList = new SinglyLinkedList<int>();
+            var curr = list.Head;
             while(curr != null)
             {
                 if(curr.Data < value)
@@ -87,7 +83,7 @@ namespace Problems
             var node3 = new SinglyLinkedListNode<int>(0);
             var retList = new SinglyLinkedList<int>();
             var retVal = node3;
-            int carry = 0;
+            var carry = 0;
             while(node1 != null && node2 != null)
             {
                 node3.Data = (node1.Data + node2.Data + carry) % 10;
@@ -126,16 +122,16 @@ namespace Problems
         }
         public bool IsListPalindrome(SinglyLinkedList<int> list) 
         {
-            Stack<int> buff = new Stack<int>();
+            var buff = new Stack<int>();
             var cur = list.Head;
-            int length = 0;
+            var length = 0;
             while (cur != null)
             {
                 cur = cur.Next;
                 length++;
             }
             cur = list.Head;
-            for(int i=0; i < length/2;i++)
+            for(var i=0; i < length/2;i++)
             {
                 buff.Push(cur.Data);
                 cur = cur.Next;

@@ -1,10 +1,7 @@
 ﻿using DataStructureHelper;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace LinkedList
 {
@@ -40,7 +37,7 @@ namespace LinkedList
 
         public DoublyLinkedListNode<T> InsertFirst(T data)
         {
-            DoublyLinkedListNode<T> node = new DoublyLinkedListNode<T>(data);
+            var node = new DoublyLinkedListNode<T>(data);
             if (Head == null)
             {
                 Head = Tail = node;
@@ -59,7 +56,7 @@ namespace LinkedList
 
         public DoublyLinkedListNode<T> InsertLast(T data)
         {
-            DoublyLinkedListNode<T> node = new DoublyLinkedListNode<T>(data);
+            var node = new DoublyLinkedListNode<T>(data);
             if (Tail == null)
             {
                 Head = Tail = node;
@@ -112,9 +109,9 @@ namespace LinkedList
 
         public override string ToString()
         {
-            int count = 0;
-            StringBuilder sb = new StringBuilder();
-            DoublyLinkedListNode<T> head = Head;
+            var count = 0;
+            var sb = new StringBuilder();
+            var head = Head;
             while (head != null && count != Length)
             {
                 sb.Append(head.Data);
@@ -127,31 +124,28 @@ namespace LinkedList
 
         public override bool Equals(object obj)
         {
-            int count = 0;
+            var count = 0;
             if (obj == null)
                 return false;
-            else
+            var list = (DoubleCircularLinkedList<T>)obj;
+            var n1 = Head;
+            var n2 = list.Head;
+            while (n1 != null && count != Length)
             {
-                DoubleCircularLinkedList<T> list = (DoubleCircularLinkedList<T>)obj;
-                DoublyLinkedListNode<T> n1 = Head;
-                DoublyLinkedListNode<T> n2 = list.Head;
-                while (n1 != null && count != Length)
+                if (n1 != n2)
                 {
-                    if (n1 != n2)
-                    {
-                        return false;
-                    }
-                    n1 = n1.Next;
-                    n2 = n2.Next;
-                    count++;
+                    return false;
                 }
-                return true;
+                n1 = n1.Next;
+                n2 = n2.Next;
+                count++;
             }
+            return true;
         }
 
         public override int GetHashCode()
         {
-            int hash = 97;
+            var hash = 97;
             hash = hash * 143 + (Head == null ? 0 : Head.GetHashCode());
             hash = hash * 143 + (Tail == null ? 0 : Tail.GetHashCode());
             hash = hash * 143 + (Length.GetHashCode());
@@ -161,7 +155,7 @@ namespace LinkedList
         public IEnumerator<T> GetEnumerator()
         {
             var node = Head;
-            int count = 0;
+            var count = 0;
             while(node != null && count < _length)
             {
                 yield return node.Data;

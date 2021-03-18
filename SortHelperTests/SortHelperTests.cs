@@ -12,13 +12,13 @@ namespace SortHelperTests
             var nodeToBeSorted = CreateList();
             var mergeSortHelper = new MergeSortHelper();
             var sortedHead = mergeSortHelper.MergeSort(nodeToBeSorted);
-            Assert.AreEqual(sortedHead.Data, 1);
-            Assert.AreEqual(sortedHead.Next.Data, 3);
-            Assert.AreEqual(sortedHead.Next.Next.Data, 4);
-            Assert.AreEqual(sortedHead.Next.Next.Next.Data, 6);
-            Assert.AreEqual(sortedHead.Next.Next.Next.Next.Data, 9);
-            Assert.AreEqual(sortedHead.Next.Next.Next.Next.Next.Data, 11);
-            Assert.AreEqual(sortedHead.Next.Next.Next.Next.Next.Next.Data, 18);
+            Assert.AreEqual(sortedHead.data, 1);
+            Assert.AreEqual(sortedHead.Next.data, 3);
+            Assert.AreEqual(sortedHead.Next.Next.data, 4);
+            Assert.AreEqual(sortedHead.Next.Next.Next.data, 6);
+            Assert.AreEqual(sortedHead.Next.Next.Next.Next.data, 9);
+            Assert.AreEqual(sortedHead.Next.Next.Next.Next.Next.data, 11);
+            Assert.AreEqual(sortedHead.Next.Next.Next.Next.Next.Next.data, 18);
         }
         [TestMethod]
         public void MergeListsHelperTests()
@@ -51,7 +51,7 @@ namespace SortHelperTests
             var nodeToBeSorted = CreateList();
             var mergeSortHelper = new MergeSortHelper();
             var answer = mergeSortHelper.ReverseKIntervals(nodeToBeSorted, 1);
-            string debugStopper = answer.ToString();
+            var debugStopper = answer.ToString();
 
         }
     }

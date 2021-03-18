@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace Sorting
+﻿namespace Sorting
 {
     public class MergeSortHelper
     {
@@ -10,21 +7,18 @@ namespace Sorting
         {
             if (head == null || head.Next == null)
                 return head;
-            else
+            var slowP = head;
+            var fastP = head;
+            SinglyLinkedListNode<int> prev = null;
+            while (fastP != null && fastP.Next != null)
             {
-                SinglyLinkedListNode<int> slowP = head;
-                SinglyLinkedListNode<int> fastP = head;
-                SinglyLinkedListNode<int> prev = null;
-                while (fastP != null && fastP.Next != null)
-                {
-                    prev = slowP;
-                    slowP = slowP.Next;
-                    fastP = fastP.Next.Next;
-                }
-                SinglyLinkedListNode<int> head2 = slowP;
-                prev.Next = null;
-                return SortedMergeSimpler(MergeSort(head), MergeSort(head2));
+                prev = slowP;
+                slowP = slowP.Next;
+                fastP = fastP.Next.Next;
             }
+            var head2 = slowP;
+            prev.Next = null;
+            return SortedMergeSimpler(MergeSort(head), MergeSort(head2));
         }
         public SinglyLinkedListNode<int> SortedMerge(
             SinglyLinkedListNode<int> head1,
@@ -44,7 +38,7 @@ namespace Sorting
                     AddToMerged(ref mergedHead, ref mergedTail, head1);
                     head1 = head1.Next;
                 }
-                else if (head1.Data > head2.Data)
+                else if (head1.data > head2.data)
                 {
                     AddToMerged(ref mergedHead, ref mergedTail, head2);
                     head2 = head2.Next;
@@ -67,7 +61,7 @@ namespace Sorting
                 return head2;
             if (head2 == null)
                 return head1;
-            if (head1.Data < head2.Data)
+            if (head1.data < head2.data)
             {
                 mergedHead = head1;
                 mergedHead.Next = SortedMergeSimpler(head1.Next, head2);
@@ -127,11 +121,11 @@ namespace Sorting
         }
         public SinglyLinkedListNode<int> ReverseKIntervals(SinglyLinkedListNode<int> head, int k)
         {
-            SinglyLinkedListNode<int> curr = head;
-            SinglyLinkedListNode<int> prevHead = head;
-            SinglyLinkedListNode<int> reversedTail = head;
-            int n = k;
-            int headTracker = 0;
+            var curr = head;
+            var prevHead = head;
+            var reversedTail = head;
+            var n = k;
+            var headTracker = 0;
             while(curr != null && k > 1)
             {
                 while(k > 1 && curr.Next != null)
@@ -141,9 +135,9 @@ namespace Sorting
                 }
                 if(k == 1 || curr.Next == null)
                 {
-                    SinglyLinkedListNode<int> temp = curr.Next;
+                    var temp = curr.Next;
                     curr.Next = null;
-                    SinglyLinkedListNode<int> reversedHead = ReverseList(prevHead);
+                    var reversedHead = ReverseList(prevHead);
                     if (headTracker == 0)
                     {
                         head = reversedHead;
@@ -167,7 +161,7 @@ namespace Sorting
         {
             if (prevTail == null || prevTail.Next == null)
                 return prevTail;
-            SinglyLinkedListNode<int> rev = ReverseList(prevTail.Next);
+            var rev = ReverseList(prevTail.Next);
             prevTail.Next.Next = prevTail;
             prevTail.Next = null;
             return rev;

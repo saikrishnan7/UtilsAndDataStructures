@@ -1,35 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ComplexDataStructures
 {
     public class RandomizedCollection
     {
-        private Dictionary<int, HashSet<int>> indexMapper;
-        private List<int> values;
-        private Random random;
+        private readonly Dictionary<int, HashSet<int>> _indexMapper;
+        private readonly List<int> _values;
+        private readonly Random _random;
         /** Initialize your data structure here. */
         public RandomizedCollection()
         {
-            indexMapper = new Dictionary<int, HashSet<int>>();
-            values = new List<int>();
-            random = new Random();
+            _indexMapper = new Dictionary<int, HashSet<int>>();
+            _values = new List<int>();
+            _random = new Random();
         }
 
         /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
         public bool Insert(int val)
         {
-            values.Add(val);
-            bool retval = false;
-            if (!indexMapper.ContainsKey(val))
+            _values.Add(val);
+            var retval = false;
+            if (!_indexMapper.ContainsKey(val))
             {
-                indexMapper[val] = new HashSet<int>();
+                _indexMapper[val] = new HashSet<int>();
                 retval = true;
             }
-            indexMapper[val].Add(values.Count - 1);
+            _indexMapper[val].Add(_values.Count - 1);
             //Console.WriteLine(values[values.Count - 1]);
             return retval;
         }
@@ -37,27 +34,27 @@ namespace ComplexDataStructures
         /** Removes a value from the set. Returns true if the set contained the specified element. */
         public bool Remove(int val)
         {
-            if (!indexMapper.ContainsKey(val))
+            if (!_indexMapper.ContainsKey(val))
                 return false;
-            int lastVal = values[values.Count - 1];
+            var lastVal = _values[_values.Count - 1];
             if (lastVal != val)
             {
-                var desiredIndices = indexMapper[val];
+                var desiredIndices = _indexMapper[val];
                 IEnumerator<int> e = desiredIndices.GetEnumerator();
                 e.MoveNext();
-                int index = e.Current;
-                indexMapper[lastVal].Add(index);
-                indexMapper[val].Remove(index);
-                indexMapper[lastVal].Remove(values.Count - 1);
-                values[index] = lastVal;
+                var index = e.Current;
+                _indexMapper[lastVal].Add(index);
+                _indexMapper[val].Remove(index);
+                _indexMapper[lastVal].Remove(_values.Count - 1);
+                _values[index] = lastVal;
             }
             else
             {
-                indexMapper[lastVal].Remove(values.Count - 1);
+                _indexMapper[lastVal].Remove(_values.Count - 1);
             }
-            if (indexMapper[val].Count == 0)
-                indexMapper.Remove(val);
-            values.RemoveAt(values.Count - 1);
+            if (_indexMapper[val].Count == 0)
+                _indexMapper.Remove(val);
+            _values.RemoveAt(_values.Count - 1);
             return true;
         }
 
@@ -65,9 +62,9 @@ namespace ComplexDataStructures
         public int GetRandom()
         {
             //Console.WriteLine(values.Count);
-            int randVal = random.Next(values.Count);
+            var randVal = _random.Next(_values.Count);
             //Console.WriteLine(randVal);
-            return values[randVal];
+            return _values[randVal];
         }
     }
 

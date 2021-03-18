@@ -2,12 +2,12 @@
 {
     public class SinglyLinkedListNode<T> where T : struct
     {
-        public T Data;
+        public T data;
         public SinglyLinkedListNode<T> Next { get; set; }
 
         public SinglyLinkedListNode(T data)
         {
-            Data = data;
+            this.data = data;
         }
     }
 }

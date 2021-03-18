@@ -5,43 +5,43 @@ namespace Problems
 {
     public class MinStack<T> : ComplexDataStructures.Stack<T> where T : struct
     {
-        private ComplexDataStructures.Stack<T> minStack;
+        private readonly ComplexDataStructures.Stack<T> _minStack;
 
         public MinStack()
         {
-            minStack = new ComplexDataStructures.Stack<T>();
+            _minStack = new ComplexDataStructures.Stack<T>();
         }
         public override void Push(T item)
         {
             var comparer = Comparer<T>.Default;
             base.Push(item);
-            if (minStack.IsEmpty())
+            if (_minStack.IsEmpty())
             {
-                minStack.Push(item);
+                _minStack.Push(item);
             }
             else
             {
-                if (comparer.Compare(item, minStack.Peek()) <= 0)
+                if (comparer.Compare(item, _minStack.Peek()) <= 0)
                 {
-                    minStack.Push(item);
+                    _minStack.Push(item);
                 }
                 else
                 {
-                    minStack.Push(minStack.Peek());
+                    _minStack.Push(_minStack.Peek());
                 }
             }
         }
         public override T Pop()
         {
-            minStack.Pop();
+            _minStack.Pop();
             return base.Pop();   
         }
 
         public T Min()
         {
-            if (minStack.Size == 0)
+            if (_minStack.Size == 0)
                 throw new InvalidOperationException("Cannot employ Min() when stack is empty");
-            return minStack.Peek();
+            return _minStack.Peek();
         }
     }
 }

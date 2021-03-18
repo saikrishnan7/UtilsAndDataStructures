@@ -1,45 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SolidPrinciplesExercise.OCP
 {
     public class Cart
     {
-        private readonly List<OrderItem> items;
+        private readonly List<OrderItem> _items;
 
-        private readonly IPricingCalculator pricingCalculator;
+        private readonly IPricingCalculator _pricingCalculator;
 
         public Cart()
         {
-            items = new List<OrderItem>();
-            pricingCalculator = new PricingCalculator();
+            _items = new List<OrderItem>();
+            _pricingCalculator = new PricingCalculator();
         }
 
         public Cart(IPricingCalculator pricingCalculator)
         {
-            items = new List<OrderItem>();
-            this.pricingCalculator = pricingCalculator;
+            _items = new List<OrderItem>();
+            this._pricingCalculator = pricingCalculator;
         }
 
         public void AddItem(OrderItem item)
         {
-            items.Add(item);
+            _items.Add(item);
         }
 
         public IEnumerable<OrderItem> GetItems()
         {
-            return items;
+            return _items;
         }
 
         public decimal GetCartTotal()
         {
             decimal total = 0;
-            foreach (var item in items)
+            foreach (var item in _items)
             {
-                total += pricingCalculator.CalculatePrice(item);
+                total += _pricingCalculator.CalculatePrice(item);
             }
             return total;
         }
