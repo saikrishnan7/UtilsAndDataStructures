@@ -78,6 +78,8 @@ namespace PriorityQueueTests
             Assert.AreEqual(maxHeap.Dequeue(), 10);
             Assert.AreEqual(maxHeap.Dequeue(), 10);
             Assert.AreEqual(maxHeap.Peek(), 9);
+            maxHeap.Enqueue(10);
+            Assert.AreEqual(maxHeap.Dequeue(), 10);
             Assert.AreEqual(maxHeap.Count, 15);
         }
 
@@ -90,8 +92,9 @@ namespace PriorityQueueTests
             Assert.AreEqual(minHeap.Dequeue(), 1);
             Assert.AreEqual(minHeap.Dequeue(), 1);
             Assert.AreEqual(minHeap.Dequeue(), 2);
-            Assert.AreEqual(minHeap.Peek(), 3);
-            Assert.AreEqual(minHeap.Count, 17);
+            minHeap.Enqueue(1);
+            Assert.AreEqual(minHeap.Peek(), 1);
+            Assert.AreEqual(minHeap.Count, 18);
         }
 
         private void Shuffle(List<int> list)
