@@ -29,7 +29,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortHelperTests", "SortHelp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidPrinciplesExercise", "SolidPrinciplesExercise\SolidPrinciplesExercise.csproj", "{E2BFD2D1-EE31-4508-93D5-13D709F34908}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordDictionary", "WordDictionary\WordDictionary.csproj", "{43857066-C048-4357-A884-DE1D792307FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordDictionary", "WordDictionary\WordDictionary.csproj", "{43857066-C048-4357-A884-DE1D792307FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriorityQueueTests", "PriorityQueueTests\PriorityQueueTests.csproj", "{697C31D6-E2F3-4819-A248-26ECF4F98C92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +91,10 @@ Global
 		{43857066-C048-4357-A884-DE1D792307FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43857066-C048-4357-A884-DE1D792307FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43857066-C048-4357-A884-DE1D792307FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{697C31D6-E2F3-4819-A248-26ECF4F98C92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{697C31D6-E2F3-4819-A248-26ECF4F98C92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{697C31D6-E2F3-4819-A248-26ECF4F98C92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{697C31D6-E2F3-4819-A248-26ECF4F98C92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +104,7 @@ Global
 		{58977844-9D68-47EC-912F-18606F2814AE} = {B3843FA7-ABBB-4EA5-A92A-F7C3315A7B13}
 		{BAB7066D-5E6E-4F70-BE31-1C284240F0AA} = {B3843FA7-ABBB-4EA5-A92A-F7C3315A7B13}
 		{A29EFA0E-9092-4D46-BC59-D64B63EE4E34} = {B3843FA7-ABBB-4EA5-A92A-F7C3315A7B13}
+		{697C31D6-E2F3-4819-A248-26ECF4F98C92} = {B3843FA7-ABBB-4EA5-A92A-F7C3315A7B13}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8E9E8D45-3427-43D2-A16F-50D67C446457}

@@ -13,10 +13,10 @@ namespace Problems
         private const int One = 1;
         private const int Zero = 0;
         private readonly List<int[]> _neighbours = new List<int[]>{
-        new int[] {1, 0},
-        new int[] {-1, 0},
-        new int[] {0, 1},
-        new int[] {0, -1}
+        new[] {1, 0},
+        new[] {-1, 0},
+        new[] {0, 1},
+        new[] {0, -1}
         };
 
         private readonly bool _flag = false;
@@ -281,14 +281,14 @@ namespace Problems
             IList<string> result = new List<string>();
             var phonePad = new Dictionary<char, char[]>
             {
-                { '2', new char[] { 'a', 'b', 'c' } },
-                { '3', new char[] { 'd', 'e', 'f' } },
-                { '4', new char[] { 'g', 'h', 'i' } },
-                { '5', new char[] { 'j', 'k', 'l' } },
-                { '6', new char[] { 'm', 'n', 'o' } },
-                { '7', new char[] { 'p', 'q', 'r', 's' } },
-                { '8', new char[] { 't', 'u', 'v' } },
-                { '9', new char[] { 'w', 'x', 'y', 'z' } }
+                { '2', new[] { 'a', 'b', 'c' } },
+                { '3', new[] { 'd', 'e', 'f' } },
+                { '4', new[] { 'g', 'h', 'i' } },
+                { '5', new[] { 'j', 'k', 'l' } },
+                { '6', new[] { 'm', 'n', 'o' } },
+                { '7', new[] { 'p', 'q', 'r', 's' } },
+                { '8', new[] { 't', 'u', 'v' } },
+                { '9', new[] { 'w', 'x', 'y', 'z' } }
             };
             return LetterCombinationHelper(phonePad, digits, result);
 
@@ -459,11 +459,11 @@ namespace Problems
                 IList<int> intermediate = new List<int>();
                 for (var i = 0; i < size; i++)
                 {
-                    if (q.Peek().left != null)
-                        q.Enqueue(q.Peek().left);
-                    if (q.Peek().right != null)
-                        q.Enqueue(q.Peek().right);
-                    intermediate.Add(q.Peek().val);
+                    if (q.Peek().Left != null)
+                        q.Enqueue(q.Peek().Left);
+                    if (q.Peek().Right != null)
+                        q.Enqueue(q.Peek().Right);
+                    intermediate.Add(q.Peek().Val);
                     q.Dequeue();
                 }
                 output.Add(intermediate);
@@ -1053,14 +1053,14 @@ namespace Problems
         {
             if (curr == null)
                 return;
-            if (curr.left != null)
+            if (curr.Left != null)
             {
-                TreeWalkHelper(ref s, curr.left);
+                TreeWalkHelper(ref s, curr.Left);
             }
-            s += curr.val;
-            if (curr.right != null)
+            s += curr.Val;
+            if (curr.Right != null)
             {
-                TreeWalkHelper(ref s, curr.right);
+                TreeWalkHelper(ref s, curr.Right);
             }
         }
 
@@ -1600,7 +1600,7 @@ namespace Problems
         public IList<string> RemoveInvalidParentheses(string s)
         {
             IList<string> result = new List<string>();
-            Remove(s, result, 0, 0, new char[] { '(', ')' });
+            Remove(s, result, 0, 0, new[] { '(', ')' });
             return result;
         }
 
@@ -1676,7 +1676,7 @@ namespace Problems
             Array.Reverse(charArray);
             var reversed = new string(charArray);
             if (par[0] == '(') // finished left to right
-                Remove(reversed, result, 0, 0, new char[] { ')', '(' });
+                Remove(reversed, result, 0, 0, new[] { ')', '(' });
             else // finished right to left
                 result.Add(reversed);
         }
@@ -2038,11 +2038,11 @@ namespace Problems
                 var current = q.Dequeue();
                 foreach (var neighbour in _neighbours)
                 {
-                    var r = current.x + neighbour[0];
-                    var c = current.y + neighbour[1];
+                    var r = current.X + neighbour[0];
+                    var c = current.Y + neighbour[1];
                     if (r < 0 || c < 0 || r >= rooms.GetLength(0) || c >= rooms.GetLength(1) || rooms[r, c] != Empty)
                         continue;
-                    rooms[r, c] = rooms[current.x, current.y] + 1;
+                    rooms[r, c] = rooms[current.X, current.Y] + 1;
                     q.Enqueue(new Coordinates(r, c));
                 }
             }
@@ -2072,13 +2072,13 @@ namespace Problems
                 var current = q.Dequeue();
                 foreach (var neighbor in _neighbours)
                 {
-                    var r = current.x + neighbor[0];
-                    var c = current.y + neighbor[1];
+                    var r = current.X + neighbor[0];
+                    var c = current.Y + neighbor[1];
                     if (r < 0 || c < 0 || r >= matrix.GetLength(0) || c >= matrix.GetLength(1) || dist[r, c] == Zero)
                         continue;
-                    if (dist[r, c] > dist[current.x, current.y] + 1)
+                    if (dist[r, c] > dist[current.X, current.Y] + 1)
                     {
-                        dist[r, c] = dist[current.x, current.y] + 1;
+                        dist[r, c] = dist[current.X, current.Y] + 1;
                         q.Enqueue(new Coordinates(r, c));
                     }
                 }
@@ -2163,10 +2163,10 @@ namespace Problems
     }
     public class TreeNode
     {
-        public int val;
-        public TreeNode left;
-        public TreeNode right;
-        public TreeNode(int x) { val = x; }
+        public int Val;
+        public TreeNode Left;
+        public TreeNode Right;
+        public TreeNode(int x) { Val = x; }
     }
 
     public class CustomIntComparer : IComparer<int>
@@ -2184,13 +2184,13 @@ namespace Problems
 
     public class Coordinates
     {
-        public int x;
-        public int y;
+        public int X;
+        public int Y;
 
         public Coordinates(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
         }
     }
 }

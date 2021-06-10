@@ -79,11 +79,11 @@ public class GameOfLifeClass
         _points.Add(north);
         foreach (var p in _points)
         {
-            if (p.i >= 0 && p.j >= 0)
+            if (p.I >= 0 && p.J >= 0)
             {
-                if (p.i < _original.Length && p.j < _original[p.i].Length)
+                if (p.I < _original.Length && p.J < _original[p.I].Length)
                 {
-                    if (_original[p.i][p.j] == 1)
+                    if (_original[p.I][p.J] == 1)
                         count++;
                 }
             }
@@ -95,12 +95,12 @@ public class GameOfLifeClass
 
 public class Point
 {
-    public int i;
-    public int j;
+    public int I;
+    public int J;
 
     public Point(int i, int j)
     {
-        this.i = i;
-        this.j = j;
+        this.I = i;
+        this.J = j;
     }
 }

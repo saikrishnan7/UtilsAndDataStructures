@@ -6,11 +6,11 @@ namespace ComplexDataStructures
     {
         private class TrieNode
         {
-            internal readonly Dictionary<char, TrieNode> children;
+            internal readonly Dictionary<char, TrieNode> Children;
 
             public TrieNode()
             {
-                children = new Dictionary<char, TrieNode>();
+                Children = new Dictionary<char, TrieNode>();
             }
 
             internal bool IsWord { set; get; }
@@ -29,14 +29,14 @@ namespace ComplexDataStructures
             foreach (var t in word)
             {
                 TrieNode newNode;
-                if (!current.children.ContainsKey(t))
+                if (!current.Children.ContainsKey(t))
                 {
                     newNode = new TrieNode();
-                    current.children.Add(t, newNode);
+                    current.Children.Add(t, newNode);
                 }
                 else
                 {
-                    newNode = current.children[t];
+                    newNode = current.Children[t];
                 }
                 current = newNode;
             }
@@ -62,13 +62,13 @@ namespace ComplexDataStructures
             for (var i = 0; i < word.Length && !isNotFound; i++)
             {
                 TrieNode newNode = null;
-                if (!current.children.ContainsKey(word[i]))
+                if (!current.Children.ContainsKey(word[i]))
                 {
                     isNotFound = true;
                 }
                 else
                 {
-                    newNode = current.children[word[i]];
+                    newNode = current.Children[word[i]];
                 }
                 current = newNode;
             }

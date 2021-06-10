@@ -68,7 +68,6 @@ namespace LinkedList
         {
             var headCopy = Head;
             Head = Head.Next;
-            headCopy = null;
             Length--;
             return this;
         }

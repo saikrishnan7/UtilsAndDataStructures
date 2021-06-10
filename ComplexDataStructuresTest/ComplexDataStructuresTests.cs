@@ -80,7 +80,7 @@ namespace ComplexDataStructuresTest
         [TestMethod]
         public void SnakeGameTest()
         {
-            var sg = new SnakeGame(3, 2, new int[,] { {1, 2}, { 0, 1 } });
+            var sg = new SnakeGame(3, 2, new[,] { {1, 2}, { 0, 1 } });
             Assert.AreEqual(sg.Move("R"), 0);
             Assert.AreEqual(sg.Move("D"), 0);
             Assert.AreEqual(sg.Move("R"), 1);
@@ -94,7 +94,7 @@ namespace ComplexDataStructuresTest
         {
             //SortedList<int, Point> maxHeap = new SortedList<int, Point>();
             var maxHeap = new MaxHeap<Point>();
-            var matrix = new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+            var matrix = new[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
             for(var i=0; i < matrix.GetLength(0); i++)
             {
                 for(var j=0; j < matrix.GetLength(1); j++)

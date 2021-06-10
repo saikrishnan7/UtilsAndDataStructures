@@ -5,19 +5,19 @@
         public SinglyLinkedListNode<int> MergeSort(
           SinglyLinkedListNode<int> head)
         {
-            if (head == null || head.Next == null)
+            if (head?.Next == null)
                 return head;
             var slowP = head;
             var fastP = head;
             SinglyLinkedListNode<int> prev = null;
-            while (fastP != null && fastP.Next != null)
+            while (fastP?.Next != null)
             {
                 prev = slowP;
                 slowP = slowP.Next;
                 fastP = fastP.Next.Next;
             }
             var head2 = slowP;
-            prev.Next = null;
+            if (prev != null) prev.Next = null;
             return SortedMergeSimpler(MergeSort(head), MergeSort(head2));
         }
         public SinglyLinkedListNode<int> SortedMerge(
@@ -38,7 +38,7 @@
                     AddToMerged(ref mergedHead, ref mergedTail, head1);
                     head1 = head1.Next;
                 }
-                else if (head1.data > head2.data)
+                else if (head1.Data > head2.Data)
                 {
                     AddToMerged(ref mergedHead, ref mergedTail, head2);
                     head2 = head2.Next;
@@ -56,12 +56,12 @@
             SinglyLinkedListNode<int> head1,
             SinglyLinkedListNode<int> head2)
         {
-            SinglyLinkedListNode<int> mergedHead = null;
             if (head1 == null)
                 return head2;
             if (head2 == null)
                 return head1;
-            if (head1.data < head2.data)
+            SinglyLinkedListNode<int> mergedHead;
+            if (head1.Data < head2.Data)
             {
                 mergedHead = head1;
                 mergedHead.Next = SortedMergeSimpler(head1.Next, head2);
@@ -87,7 +87,6 @@
         }
         public SinglyLinkedListNode<int> MergeAlternating(SinglyLinkedListNode<int> list1, SinglyLinkedListNode<int> list2)
         {
-            var head = list1;
             SinglyLinkedListNode<int> merged = null, mergedHead=null;
             if (list1 == null)
             {
@@ -159,7 +158,7 @@
 
         private SinglyLinkedListNode<int> ReverseList(SinglyLinkedListNode<int> prevTail)
         {
-            if (prevTail == null || prevTail.Next == null)
+            if (prevTail?.Next == null)
                 return prevTail;
             var rev = ReverseList(prevTail.Next);
             prevTail.Next.Next = prevTail;

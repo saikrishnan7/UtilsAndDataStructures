@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sorting;
 
 namespace SortHelperTests
@@ -12,13 +13,13 @@ namespace SortHelperTests
             var nodeToBeSorted = CreateList();
             var mergeSortHelper = new MergeSortHelper();
             var sortedHead = mergeSortHelper.MergeSort(nodeToBeSorted);
-            Assert.AreEqual(sortedHead.data, 1);
-            Assert.AreEqual(sortedHead.Next.data, 3);
-            Assert.AreEqual(sortedHead.Next.Next.data, 4);
-            Assert.AreEqual(sortedHead.Next.Next.Next.data, 6);
-            Assert.AreEqual(sortedHead.Next.Next.Next.Next.data, 9);
-            Assert.AreEqual(sortedHead.Next.Next.Next.Next.Next.data, 11);
-            Assert.AreEqual(sortedHead.Next.Next.Next.Next.Next.Next.data, 18);
+            Assert.AreEqual(sortedHead.Data, 1);
+            Assert.AreEqual(sortedHead.Next.Data, 3);
+            Assert.AreEqual(sortedHead.Next.Next.Data, 4);
+            Assert.AreEqual(sortedHead.Next.Next.Next.Data, 6);
+            Assert.AreEqual(sortedHead.Next.Next.Next.Next.Data, 9);
+            Assert.AreEqual(sortedHead.Next.Next.Next.Next.Next.Data, 11);
+            Assert.AreEqual(sortedHead.Next.Next.Next.Next.Next.Next.Data, 18);
         }
         [TestMethod]
         public void MergeListsHelperTests()
@@ -44,6 +45,15 @@ namespace SortHelperTests
             var node6 = node5.Next = new SinglyLinkedListNode<int>(9);
             var node7 = node6.Next = new SinglyLinkedListNode<int>(6);
             return head;
+        }
+
+        [TestMethod]
+        public void QuickSortTest()
+        {
+            int[] arr = {1, 2, 8, 7, 4, 3, 5, 6};
+            var qs = new QuickSorter();
+            qs.QuickSort(arr);
+            Assert.AreEqual(arr[7], 8);
         }
         [TestMethod]
         public void ReverseKIntervalsTest()

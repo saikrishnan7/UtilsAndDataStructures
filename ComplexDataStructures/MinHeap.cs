@@ -10,7 +10,6 @@ namespace ComplexDataStructures
         public MinHeap(int size)
         {
             _heapElements = new T[size];
-            size = 0;
         }
 
         public MinHeap()
@@ -18,7 +17,7 @@ namespace ComplexDataStructures
             _size = 0;
             _heapElements = new T[128];
         }
-        public T Min { get { return _size != 0 ? _heapElements[0] : throw new Exception("Heap is empty"); } }
+        public T Min => _size != 0 ? _heapElements[0] : throw new Exception("Heap is empty");
 
         public void Add(T data)
         {

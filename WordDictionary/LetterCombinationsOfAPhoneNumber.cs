@@ -6,11 +6,11 @@ namespace WordDictionary
 {
     public class LetterCombinationsOfAPhoneNumber
     {
-        private Dictionary<char, string> keyPad;
+        private readonly Dictionary<char, string> _keyPad;
 
         public LetterCombinationsOfAPhoneNumber()
         {
-            keyPad = new Dictionary<char, string>
+            _keyPad = new Dictionary<char, string>
             {
                 { '2', "abc" },
                 { '3', "def" },
@@ -40,7 +40,7 @@ namespace WordDictionary
             }
             else
             {
-                foreach (var c in keyPad[digits[currentIndex]])
+                foreach (var c in _keyPad[digits[currentIndex]])
                 {
                      LetterCombinationHelper(digits, result, currentIndex + 1, currentString + c); //explore
                 }

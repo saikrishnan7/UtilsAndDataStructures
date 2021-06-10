@@ -52,7 +52,7 @@ namespace SampleProblemsTests
         public void PartitionListTest()
         {
             var list = new SinglyLinkedList<int>();
-            var nums = new int[] { 3, 5, 8, 5, 10, 2, 1 };
+            var nums = new[] { 3, 5, 8, 5, 10, 2, 1 };
             foreach (var num in nums)
             {
                 list.InsertLast(num);
@@ -67,7 +67,7 @@ namespace SampleProblemsTests
         {
             var list1 = new SinglyLinkedList<int>();
             var list2 = new SinglyLinkedList<int>();
-            var nums = new int[] { 3, 5, 8 };
+            var nums = new[] { 3, 5, 8 };
             foreach (var num in nums)
             {
                 list1.InsertLast(num);
