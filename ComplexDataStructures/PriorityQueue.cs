@@ -41,6 +41,8 @@ namespace ComplexDataStructures
 
         public T Dequeue()
         {
+            if (Count == 0)
+                throw new Exception($"The ${nameof(PriorityQueue<T>)} is empty, cannot dequeue an empty queue");
             Swap(FrontIndex, _data.Count - 1);
             var item = _data[_data.Count - 1];
             _data.RemoveAt(_data.Count - 1);
@@ -50,6 +52,8 @@ namespace ComplexDataStructures
 
         public T Peek()
         {
+            if (Count == 0)
+                throw new Exception($"The ${nameof(PriorityQueue<T>)} is empty, cannot peek an empty queue");
             return _data[FrontIndex];
         }
 
