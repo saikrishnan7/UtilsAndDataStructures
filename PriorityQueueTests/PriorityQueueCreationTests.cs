@@ -53,19 +53,29 @@ namespace PriorityQueueTests
         }
 
         [TestMethod]
-        public void BuildEmptyMinHeap()
+        public void BuildEmptyMinHeapTest()
         {
             var minHeap = PriorityQueue<int>.BuildMinPriorityQueue(new List<int>());
             Assert.ThrowsException<Exception>(() => minHeap.Peek());
             Assert.ThrowsException<Exception>(() => minHeap.Dequeue());
+            minHeap.Enqueue(1);
+            minHeap.Enqueue(2);
+            Assert.AreEqual(2, minHeap.Count);
+            Assert.AreEqual(minHeap.Dequeue(), 1);
+            Assert.AreEqual(minHeap.Peek(), 2);
         }
 
         [TestMethod]
-        public void BuildEmptyMaxHeap()
+        public void BuildEmptyMaxHeapTest()
         {
             var maxHeap = PriorityQueue<int>.BuildMaxPriorityQueue(new List<int>());
             Assert.ThrowsException<Exception>(() => maxHeap.Peek());
             Assert.ThrowsException<Exception>(() => maxHeap.Dequeue());
+            maxHeap.Enqueue(1);
+            maxHeap.Enqueue(2);
+            Assert.AreEqual(2, maxHeap.Count);
+            Assert.AreEqual(maxHeap.Dequeue(), 2);
+            Assert.AreEqual(maxHeap.Peek(), 1);
         }
 
         private void Shuffle(List<int> list)
