@@ -6,16 +6,27 @@ using System.Threading.Tasks;
 
 namespace ComplexDataStructures
 {
+    /// <summary>
+    /// A collection that sorts the elements based on priority dictated by the Comparer provided.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class PriorityQueue<T> where T : IComparable<T>
     {
         private const int FrontIndex = 1;
 
         private readonly List<T> _data;
 
+        /// <summary>
+        /// Returns the number of elements in the Priority Queue
+        /// </summary>
         public int Count => _data.Count - 1;
 
         private readonly IComparer<T> _comparer;
 
+        /// <summary>
+        /// Creates a Priority Queue with the comparer provided, else resorts to default comparer
+        /// </summary>
+        /// <param name="comparer"></param>
         public PriorityQueue(IComparer<T> comparer = null)
         {
             if (comparer == null)
@@ -33,11 +44,20 @@ namespace ComplexDataStructures
             };
         }
 
+        /// <summary>
+        /// Adds an item to the Priority Queue
+        /// </summary>
+        /// <param name="item">The item to be added</param>
         public void Enqueue(T item)
         {
             _data.Add(item);
             UpHeap(_data.Count - 1);
         }
+
+        /// <summary>
+        /// Extracts the top item from the Priority Queue and replaces it with the item that has the next highest priority
+        /// </summary>
+        /// <returns>The highest priority item that was extracted</returns>
 
         public T Dequeue()
         {
@@ -50,6 +70,10 @@ namespace ComplexDataStructures
             return item;
         }
 
+        /// <summary>
+        /// Gives the highest priority item in the Priority Queue without removing it
+        /// </summary>
+        /// <returns>Item that has the highest priority in the Priority Queue</returns>
         public T Peek()
         {
             if (Count == 0)
@@ -57,6 +81,10 @@ namespace ComplexDataStructures
             return _data[FrontIndex];
         }
 
+        /// <summary>
+        /// Check if the Priority Queue is empty
+        /// </summary>
+        /// <returns>boolean that denotes whether the Priority Queue is empty.</returns>
         public bool IsEmpty()
         {
             return Count == 0;
