@@ -114,7 +114,7 @@ namespace ComplexDataStructures
         public static PriorityQueue<T> BuildMinPriorityQueue(List<T> elements) => BuildMinHeap(elements);
 
         private static PriorityQueue<T> BuildMinHeap(List<T> elements)
-        {
+        { 
             return BuildHeap(NaturalOrderComparer, elements);
         }
 
@@ -125,6 +125,8 @@ namespace ComplexDataStructures
 
         private static PriorityQueue<T> BuildHeap(IComparer<T> comparer, List<T> elements)
         {
+            if (elements == null)
+                throw new ArgumentNullException(nameof(elements), "The list passed for heap creation can not be null");
             var heap = new PriorityQueue<T>(comparer);
             elements.ForEach(e => heap._data.Add(e));
             for (var i = heap._data.Count / 2; i >= 1; i--)

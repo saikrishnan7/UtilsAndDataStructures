@@ -97,7 +97,7 @@ namespace PriorityQueueTests
             Assert.AreEqual(minHeap.Count, 18);
         }
 
-        private void Shuffle(List<int> list)
+        private void Shuffle(IList<int> list)
         {
             var count = list.Count;
             while (count > 1)
